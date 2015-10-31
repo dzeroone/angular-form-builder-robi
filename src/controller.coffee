@@ -33,19 +33,25 @@ angular.module 'builder.controller', ['builder.provider']
         copyObjectToScope formObject, $scope
 
         $scope.optionsText = formObject.options.join '\n'
+        $scope.questionsText = formObject.questions.join '\n'
 
-        $scope.$watch '[label, description, placeholder, required, options, validation]', ->
+        $scope.$watch '[label, description, placeholder, required, options, questions, direction, validation]', ->
             formObject.label = $scope.label
             formObject.description = $scope.description
             formObject.placeholder = $scope.placeholder
             formObject.required = $scope.required
             formObject.options = $scope.options
-            formObject.validation = $scope.validation
+            formObject.questions = $scope.questions
+            formObject.direction = $scope.direction
         , yes
 
         $scope.$watch 'optionsText', (text) ->
             $scope.options = (x for x in text.split('\n') when x.length > 0)
             $scope.inputText = $scope.options[0]
+
+        $scope.$watch 'questionsText', (text) ->
+            $scope.questions = (x for x in text.split('\n') when x.length > 0)
+            $scope.inputText = $scope.questions[0]
 
         component = $builder.components[formObject.component]
         $scope.validationOptions = component.validationOptions
@@ -62,6 +68,7 @@ angular.module 'builder.controller', ['builder.provider']
                 placeholder: $scope.placeholder
                 required: $scope.required
                 optionsText: $scope.optionsText
+                questionsText: $scope.questionsText
                 validation: $scope.validation
         rollback: ->
             ###
@@ -73,6 +80,7 @@ angular.module 'builder.controller', ['builder.provider']
             $scope.placeholder = @model.placeholder
             $scope.required = @model.required
             $scope.optionsText = @model.optionsText
+            $scope.questionsText = @model.questionsText
             $scope.validation = @model.validation
 ]
 

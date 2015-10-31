@@ -50,6 +50,8 @@ angular.module 'builder.provider', []
             validation: component.validation ? '/.*/'
             validationOptions: component.validationOptions ? []
             options: component.options ? []
+            questions: component.questions ? []
+            direction: component.direction ? []
             arrayToText: component.arrayToText ? no
             template: component.template
             templateUrl: component.templateUrl
@@ -80,6 +82,8 @@ angular.module 'builder.provider', []
             description: formObject.description ? component.description
             placeholder: formObject.placeholder ? component.placeholder
             options: formObject.options ? component.options
+            questions: formObject.questions ? component.questions
+            direction: formObject.direction ? component.direction
             required: formObject.required ? component.required
             validation: formObject.validation ? component.validation
         result

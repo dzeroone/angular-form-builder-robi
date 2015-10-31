@@ -91,7 +91,6 @@
             required: $scope.required,
             optionsText: $scope.optionsText,
             questionsText: $scope.questionsText,
-            direction: $scope.direction,
             validation: $scope.validation
           };
         },
@@ -109,7 +108,6 @@
           $scope.required = this.model.required;
           $scope.optionsText = this.model.optionsText;
           $scope.questionsText = this.model.questionsText;
-          $scope.direction = this.model.direction;
           return $scope.validation = this.model.validation;
         }
       };
